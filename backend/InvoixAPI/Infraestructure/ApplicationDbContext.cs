@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using InvoixAPI.Domain;
 
-namespace Invoix.Infrastructure;
+namespace InvoixAPI.Infrastructure;
 
 public class ApplicationDbContext : DbContext
 {
