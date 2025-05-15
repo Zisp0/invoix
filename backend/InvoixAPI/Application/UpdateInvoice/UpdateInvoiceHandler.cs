@@ -21,7 +21,7 @@ public class UpdateInvoiceHandler : IRequestHandler<UpdateInvoiceCommand, bool>
             .FirstAsync(i => i.Id == request.Id, cancellationToken);
        
         invoice.Client = request.Client;
-        invoice.Date = request.Date;
+        invoice.Date = DateTime.SpecifyKind(request.Date, DateTimeKind.Utc);
 
         var toDelete = invoice.Details
             .Where(d => request.DeletedDetailIds.Contains(d.Id))
