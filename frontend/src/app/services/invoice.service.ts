@@ -8,9 +8,9 @@ import { Invoice } from '../models/invoice.model';
 export class InvoiceService {
 
   private invoices: Invoice[] = [
-    { id: 1, client: 'Carlos Pérez', date: '2025-05-10', total: 120000 },
-    { id: 2, client: 'Ana Gómez', date: '2025-05-12', total: 95000 },
-    { id: 3, client: 'Luis Ramírez', date: '2025-05-13', total: 220000 }
+    { id: 1, client: 'Carlos Pérez', date: '2025-05-10', total: 120000, details: []},
+    { id: 2, client: 'Ana Gómez', date: '2025-05-12', total: 95000, details: [] },
+    { id: 3, client: 'Luis Ramírez', date: '2025-05-13', total: 220000, details: [] }
   ];
 
   constructor() { }
@@ -21,5 +21,19 @@ export class InvoiceService {
 
   createInvoice(invoice: Invoice): Observable<{ success: boolean; message: string }> {
     return of({success: true, message: "Factura creada"});
+  }
+
+  getInvoiceById(id: number): Observable<Invoice> {
+    const mockInvoice: Invoice = {
+      id,
+      client: 'Juan Gonzalez',
+      date: '2025-05-15',
+      total: 150,
+      details: [
+        { product: 'Product 1', quantity: 2, unitPrice: 25, subtotal: 50 },
+        { product: 'Product 2', quantity: 5, unitPrice: 20, subtotal: 100 },
+      ],
+    };
+    return of(mockInvoice);
   }
 }
