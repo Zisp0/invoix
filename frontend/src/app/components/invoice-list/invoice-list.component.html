@@ -1,0 +1,32 @@
+<div class="container mx-auto px-4 py-8">
+	<h1 class="text-2xl font-bold mb-6 text-gray-800">Listado de Facturas</h1>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+		<div routerLink="/invoices/create" class="max-w-sm rounded overflow-hidden shadow-lg bg-white border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer h-56">
+			<div class="text-center p-6">
+				<div class="bg-gray-100 rounded-full p-4 mx-auto mb-4 w-16 h-16 flex items-center justify-center">
+					<i class="fa fa-plus text-blue-500 text-4xl"></i>
+				</div>
+				<h2 class="font-bold text-xl mb-2">
+					Agregar nueva factura
+				</h2>
+				<p class="text-gray-600">
+					Haz clic para crear una nueva factura
+				</p>
+			</div>
+		</div>
+
+		<div *ngFor="let invoice of invoices" class="max-w-sm rounded overflow-hidden shadow-lg bg-white h-56">
+			<div class="px-6 py-4">
+				<div class="font-bold text-xl mb-2">Factura #{{ invoice.id }}</div>
+				<p class="text-gray-700 text-base"><strong>Cliente: </strong>{{ invoice.client }}</p>
+				<p class="text-gray-700 text-base"><strong>Fecha: </strong>{{ invoice.date | date }}</p>
+				<p class="text-gray-700 text-base"><strong>Total: </strong>${{ invoice.total | number:'1.2-2' }}</p>
+			</div>
+			<div class="px-6 pt-2 pb-4 flex space-x-2">
+				<button routerLink="/invoices/{{ invoice.id }}" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 flex items-center"><i class="fa fa-regular fa-eye"></i>&nbsp;Ver</button>
+				<button routerLink="/invoices/{{ invoice.id }}/edit" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-600 flex items-center"><i class="fa fa-edit"></i>&nbsp;Editar</button>
+				<button (click)="deleteInvoice(invoice.id)" class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 flex items-center"><i class="fa fa-trash"></i>&nbsp;Eliminar</button>
+			</div>
+		</div>
+	</div>
+</div>
