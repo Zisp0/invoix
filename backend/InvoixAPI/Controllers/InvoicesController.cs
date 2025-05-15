@@ -1,4 +1,5 @@
 ﻿using InvoixAPI.Application.CreateInvoice;
+using InvoixAPI.Application.DeleteInvoice;
 using InvoixAPI.Application.GetInvoices;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,14 @@ public class InvoicesController : BaseController
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateInvoiceCommand command)
     {
-        var id = await _mediator.Send(command);
-        return CreatedAtAction(nameof(Create), new { id }, id);
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var result = await _mediator.Send(new DeleteInvoiceCommand { Id = id });
+        return Ok(result);
     }
 }

@@ -1,4 +1,4 @@
-﻿using Invoix.Infrastructure;
+﻿using InvoixAPI.Infrastructure;
 using InvoixAPI.Application.Dtos;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

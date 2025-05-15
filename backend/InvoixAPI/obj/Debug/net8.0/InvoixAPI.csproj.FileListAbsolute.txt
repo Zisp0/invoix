@@ -172,3 +172,4 @@ C:\Proyectos\invoix\backend\InvoixAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\S
 C:\Proyectos\invoix\backend\InvoixAPI\bin\Debug\net8.0\Npgsql.dll
 C:\Proyectos\invoix\backend\InvoixAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Proyectos\invoix\backend\InvoixAPI\bin\Debug\net8.0\FluentValidation.dll
+C:\Proyectos\invoix\backend\InvoixAPI\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
