@@ -1,4 +1,5 @@
-﻿using InvoixAPI.Application.GetInvoices;
+﻿using InvoixAPI.Application.CreateInvoice;
+using InvoixAPI.Application.GetInvoices;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,5 +18,12 @@ public class InvoicesController : BaseController
     {
         var result = await _mediator.Send(new GetInvoicesQuery());
         return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreateInvoiceCommand command)
+    {
+        var id = await _mediator.Send(command);
+        return CreatedAtAction(nameof(Create), new { id }, id);
     }
 }
