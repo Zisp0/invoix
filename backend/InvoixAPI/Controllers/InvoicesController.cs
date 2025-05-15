@@ -1,5 +1,6 @@
 ﻿using InvoixAPI.Application.CreateInvoice;
 using InvoixAPI.Application.DeleteInvoice;
+using InvoixAPI.Application.GetInvoiceDetail;
 using InvoixAPI.Application.GetInvoices;
 using InvoixAPI.Application.UpdateInvoice;
 using MediatR;
@@ -19,6 +20,13 @@ public class InvoicesController : BaseController
     public async Task<IActionResult> Get()
     {
         var result = await _mediator.Send(new GetInvoicesQuery());
+        return Ok(result);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(int id)
+    {
+        var result = await _mediator.Send(new GetInvoiceDetailQuery { Id = id });
         return Ok(result);
     }
 
