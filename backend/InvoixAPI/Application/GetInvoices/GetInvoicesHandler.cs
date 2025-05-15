@@ -20,7 +20,8 @@ public class GetInvoicesHandler : IRequestHandler<GetInvoicesQuery, IReadOnlyCol
         {
             Id = invoice.Id,
             Client = invoice.Client,
-            Date = invoice.Date
+            Date = invoice.Date,
+            Total = invoice.Details.Sum(d => d.Quantity * d.UnitPrice)
         }).ToListAsync(cancellationToken);
     }
 }
