@@ -24,7 +24,7 @@
 			</div>
 			<div class="px-6 pt-2 pb-4 flex space-x-2">
 				<button routerLink="/invoices/{{ invoice.id }}" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600 flex items-center"><i class="fa fa-regular fa-eye"></i>&nbsp;Ver</button>
-				<button class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-600 flex items-center"><i class="fa fa-edit"></i>&nbsp;Editar</button>
+				<button routerLink="/invoices/{{ invoice.id }}/edit" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-600 flex items-center"><i class="fa fa-edit"></i>&nbsp;Editar</button>
 				<button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600 flex items-center"><i class="fa fa-trash"></i>&nbsp;Eliminar</button>
 			</div>
 		</div>

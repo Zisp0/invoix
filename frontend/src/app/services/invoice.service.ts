@@ -30,8 +30,8 @@ export class InvoiceService {
       date: '2025-05-15',
       total: 150,
       details: [
-        { product: 'Product 1', quantity: 2, unitPrice: 25, subtotal: 50 },
-        { product: 'Product 2', quantity: 5, unitPrice: 20, subtotal: 100 },
+        { id: 1, invoiceId: id, product: 'Product 1', quantity: 2, unitPrice: 25, subtotal: 50 },
+        { id:2, invoiceId: id, product: 'Product 2', quantity: 5, unitPrice: 20, subtotal: 100 },
       ],
     };
     return of(mockInvoice);
