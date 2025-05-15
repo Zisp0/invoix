@@ -9,7 +9,7 @@ import { Invoice } from '../models/invoice.model';
 export class InvoiceService {
 
   private http = inject(HttpClient);
-  private apiUrl = 'https://invoix-n9z6.onrender.com/invoices';
+  private apiUrl = 'https://invoix-n9z6.onrender.com/api/invoices';
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class InvoiceService {
   }
 
   updateInvoice(invoice: Invoice): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${invoice.id}`, invoice);
+    return this.http.put(this.apiUrl, invoice);
   }
 
   deleteInvoice(id: number): Observable<any> {
