@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { InvoiceService } from '../../services/invoice.service';
 import { Invoice } from '../../models/invoice.model';
-import { NgForOf } from '@angular/common';
+import { CommonModule, NgForOf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-invoice-list',
-  imports: [NgForOf, RouterModule],
+  imports: [NgForOf, RouterModule, CommonModule],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css'
 })
