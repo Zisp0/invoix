@@ -2,6 +2,7 @@
 using InvoixAPI.Application.DeleteInvoice;
 using InvoixAPI.Application.GetInvoiceDetail;
 using InvoixAPI.Application.GetInvoices;
+using InvoixAPI.Application.UpdateInvoice;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,4 +43,12 @@ public class InvoicesController : BaseController
         var result = await _mediator.Send(new DeleteInvoiceCommand { Id = id });
         return Ok(result);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> Update([FromBody] UpdateInvoiceCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
+
 }
