@@ -23,6 +23,10 @@ export class InvoiceService {
     return of({success: true, message: "Factura creada"});
   }
 
+  deleteInvoice(id: number): Observable<{ success: boolean; message: string }> {
+    return of({success: true, message: "Factura eliminada"});
+  }
+
   getInvoiceById(id: number): Observable<Invoice> {
     const mockInvoice: Invoice = {
       id,
