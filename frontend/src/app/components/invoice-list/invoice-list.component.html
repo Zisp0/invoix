@@ -1,0 +1,26 @@
+<!-- invoice-list.component.html -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+	<div *ngFor="let invoice of invoices"
+		class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+		<div class="px-6 py-4">
+			<div class="font-bold text-xl mb-2">
+				Factura #{{ invoice.id }}
+			</div>
+			<p class="text-gray-700 text-base">
+				<strong>Cliente:</strong>
+				{{ invoice.client }}
+			</p>
+			<p class="text-gray-700 text-base">
+				<strong>Fecha:</strong>
+				{{ invoice.date }}
+			</p>
+			<p class="text-gray-700 text-base">
+				<strong>Total:</strong>
+				${{ invoice.total }}
+			</p>
+		</div>
+		<div class="px-6 pt-4 pb-2">
+			<button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">View Details</button>
+		</div>
+	</div>
+</div>
