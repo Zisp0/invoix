@@ -6,6 +6,7 @@ import { InvoiceDetailComponent } from './components/invoice-detail/invoice-deta
 export const routes: Routes = [
     { path: '', redirectTo: 'invoices', pathMatch: 'full' },
     { path: 'invoices', component: InvoiceListComponent },
-    { path: 'invoices/create', component: InvoiceFormComponent},
-    { path: 'invoices/:id', component: InvoiceDetailComponent }
+    { path: 'invoices/create', component: InvoiceFormComponent },
+    { path: 'invoices/:id', component: InvoiceDetailComponent },
+    { path: 'invoices/:id/edit', component: InvoiceFormComponent }
 ];
