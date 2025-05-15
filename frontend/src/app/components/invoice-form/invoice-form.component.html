@@ -1,6 +1,7 @@
 <div class="container mx-auto bg-white p-6 rounded shadow mt-6">
     <button routerLink="/invoices" class="border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm px-3 py-1 rounded flex items-center transition-colors"><i class="fa fa-arrow-left"></i>&nbsp;Volver al listado</button>
-	<h2 class="text-2xl font-bold">Nueva factura</h2>
+	<h2 *ngIf="!isEdit" class="text-2xl font-bold">Nueva factura</h2>
+	<h2 *ngIf="isEdit" class="text-2xl font-bold">Editar factura #{{ invoiceId }}</h2>
 	<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
 		<div>
 			<label class="block font-medium mb-1">Cliente</label>
@@ -16,7 +17,7 @@
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <label for="product-{{i}}" class="block font-medium mb-1">Producto</label>
-                        <input id="product-{{i}}" formControlName="product" type="text" placeholder="Producto" class="w-full border px-3 py-2 rounded" />
+                        <input id="product-{{i}}" formControlName="product" type="text" placeholder="Nombre" class="w-full border px-3 py-2 rounded" />
                     </div>
                     <div>
                         <label for="quantity-{{i}}" class="block font-medium mb-1">Cantidad</label>
@@ -24,7 +25,7 @@
                     </div>
                     <div>
                         <label for="unitPrice-{{i}}" class="block font-medium mb-1">Precio Unitario</label>
-                        <input id="unitPrice-{{i}}" formControlName="unitPrice" type="number" min="0" step="0.01" placeholder="Precio Unitario" class="w-full border px-3 py-2 rounded" />
+                        <input id="unitPrice-{{i}}" formControlName="unitPrice" type="number" min="0.01" step="0.01" placeholder="Precio Unitario" class="w-full border px-3 py-2 rounded" />
                     </div>
                 </div>
 				<div class="flex justify-between items-center mt-2">
