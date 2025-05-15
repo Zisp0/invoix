@@ -18,4 +18,8 @@ export class InvoiceService {
   getInvoices(): Observable<Invoice[]> {
     return of(this.invoices);
   }
+
+  createInvoice(invoice: Invoice): Observable<{ success: boolean; message: string }> {
+    return of({success: true, message: "Factura creada"});
+  }
 }
