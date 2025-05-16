@@ -1,4 +1,4 @@
-import { CommonModule, NgForOf } from '@angular/common';
+import { CommonModule, DatePipe, NgForOf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -7,6 +7,7 @@ import { InvoiceService } from '../../services/invoice.service';
 @Component({
   selector: 'app-invoice-form',
   imports: [ReactiveFormsModule, NgForOf, RouterModule, CommonModule],
+  providers: [DatePipe],
   templateUrl: './invoice-form.component.html',
   styleUrl: './invoice-form.component.css'
 })
@@ -21,7 +22,8 @@ export class InvoiceFormComponent {
     private fb: FormBuilder, 
     private router: Router,
     private route: ActivatedRoute,
-    private invoiceService: InvoiceService
+    private invoiceService: InvoiceService,
+    private datePipe: DatePipe
   ) {
     this.form = this.fb.group({
       client: ['', Validators.required],
@@ -48,7 +50,7 @@ export class InvoiceFormComponent {
         this.originalDetailIds = invoice.details.map(d => d.id);
         this.form.patchValue({
           client: invoice.client,
-          date: invoice.date
+          date: this.datePipe.transform(invoice.date, 'yyyy-MM-dd')
         });
         this.details.clear();
         invoice.details.forEach(d => this.details.push(this.createDetail(d)));
@@ -66,7 +68,7 @@ export class InvoiceFormComponent {
       id: [detail?.id || null],
       product: [detail?.product || '', Validators.required],
       quantity: [detail?.quantity || 1, [Validators.required, Validators.min(1)]],
-      unitPrice: [detail?.unitPrice || 0, [Validators.required, Validators.min(0)]],
+      unitPrice: [detail?.unitPrice || 0.01, [Validators.required, Validators.min(0)]],
     });
   }
 
@@ -87,20 +89,32 @@ export class InvoiceFormComponent {
       const deletedIds = this.originalDetailIds.filter(id => !currentIds.includes(id));
 
       const invoice = {
+        id: this.invoiceId,
         ...this.form.value,
         total: this.total,
         deletedDetailIds: deletedIds
       };
       this.loading = true;
-      console.log(invoice);
-      this.invoiceService.createInvoice(invoice).subscribe({
-        next: (res) => {
-          this.router.navigate(['/invoices']);
-        },
-        error: (err) => {
-          this.loading = false;
-        }
-      });
+
+      if (this.isEdit) {
+        this.invoiceService.updateInvoice(invoice).subscribe({
+          next: (res) => {
+            this.router.navigate(['/invoices']);
+          },
+          error: (err) => {
+            this.loading = false;
+          }
+        });
+      } else {
+        this.invoiceService.createInvoice(invoice).subscribe({
+          next: (res) => {
+            this.router.navigate(['/invoices']);
+          },
+          error: (err) => {
+            this.loading = false;
+          }
+        });
+      }
     }
   }
 

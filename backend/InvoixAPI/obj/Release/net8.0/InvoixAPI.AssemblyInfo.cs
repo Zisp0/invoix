@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InvoixAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e56c9a2a18acefdaaedf830e16af6c20409f58f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f7d5f06686b416b4ec3f97bb2b91deb0825a905")]
 [assembly: System.Reflection.AssemblyProductAttribute("InvoixAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InvoixAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
